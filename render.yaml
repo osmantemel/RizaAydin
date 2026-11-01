@@ -18,3 +18,4 @@ services:
       - path: /*
         name: X-Content-Type-Options
         value: nosniff
+  
