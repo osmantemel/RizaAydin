@@ -38,3 +38,14 @@ Render'da **Static Site** seçin, GitHub'daki `osmantemel/RizaAydin` deposunu ba
 `render.yaml` aynı statik yayın ayarlarını içerir. Web Service veya ücretli disk seçmeyin. Statik sitede veritabanı bağlantısı gerekmez.
 
 GitHub Pages seçilecekse kaynak deponun hesap planına göre Pages'e uygun olması gerekir. Proje yolu için `PREVIEW_BASE_PATH=/RizaAydin npm run build:preview` kullanın. Özel depoyu izin almadan herkese açmayın.
+
+### GitHub Pages otomatik yayını
+
+`.github/workflows/pages.yml`, `main` dalına push yapıldığında yalnızca statik arayüzü oluşturup Pages'e gönderir. Depo alt yolu GitHub Pages ayarlarından otomatik alınır; CSS, ikon, mobil menü ve iş sayfaları buna göre bağlanır.
+
+1. GitHub deposunda **Settings → Pages → Build and deployment → Source: GitHub Actions** seçin.
+2. Ücretsiz hesapta özel depo Pages'e uygun değilse, kaynak kodunu herkese açmayı kabul ediyorsanız depoyu Public yapın. Bu değişiklik otomatik yapılmaz.
+3. Kod değişikliklerini commit edip `main` dalına push yapın.
+4. **Actions → Publish interface to GitHub Pages** akışı tamamlandığında üretilen site bağlantısını açın.
+
+`osmantemel/RizaAydin` için beklenen adres `https://osmantemel.github.io/RizaAydin/` olur. Bu adres ancak başarılı dağıtımdan sonra çalışır. Gizli `.env`, veritabanı, gerçek müşteri kayıtları ve admin çıktıya dahil edilmez. Örnek veriler kullanılır ve arama motorları için noindex korunur.
