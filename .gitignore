@@ -6,3 +6,5 @@ node_modules/
 .next/
 backups/
 *.tsbuildinfo
+
+dist-preview/

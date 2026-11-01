@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: riza-aydin-arayuz
+    runtime: static
+    buildCommand: npm ci && npm run build:preview
+    staticPublishPath: ./dist-preview
+    envVars:
+      - key: NODE_VERSION
+        value: '24'
+      - key: INDEXABLE
+        value: 'false'
+      - key: NEXT_TELEMETRY_DISABLED
+        value: '1'
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff

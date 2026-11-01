@@ -23,3 +23,18 @@ Docker imajını üretin; `/app/data` dizinine kalıcı disk bağlayın. Yöneti
 Yayın ortamı: `ADMIN_PASSWORD`, `SITE_URL`, `INDEXABLE`, `DATA_DIR`. Derleme sırasında INDEXABLE=false ise robots ve genel metadata için gerçek yayın ayarlarıyla tekrar build gerekir. `TRUST_PROXY` yalnızca güvenilir ters vekil IP başlıklarını değiştiriyorsa etkinleştirilmelidir.
 
 İlk müşteri inceleme yayını için `INDEXABLE=false` bırakın. Örnek yorum ve çalışmalar gerçek referanslarla değiştirilene kadar indekslemeyi açmayın.
+
+## Yalnızca arayüzü ücretsiz yayımlama
+
+Müşteriye görünümü göstermek için backend veya Supabase gerekmez. `npm run build:preview` geçici bir örnek veritabanıyla arayüzü oluşturur ve yalnızca HTML/CSS/görselleri `dist-preview/` klasörüne çıkarır. Gerçek yerel veriler, parolalar ve oturumlar bu çıktıya alınmaz. Mobil menü çalışır; admin ve yorum kaydetme içermez. İndeksleme kapalıdır.
+
+Render'da **Static Site** seçin, GitHub'daki `osmantemel/RizaAydin` deposunu bağlayın:
+
+- Build command: `npm ci && npm run build:preview`
+- Publish directory: `dist-preview`
+- Node sürümü: `24`
+- Dal: `main`
+
+`render.yaml` aynı statik yayın ayarlarını içerir. Web Service veya ücretli disk seçmeyin. Statik sitede veritabanı bağlantısı gerekmez.
+
+GitHub Pages seçilecekse kaynak deponun hesap planına göre Pages'e uygun olması gerekir. Proje yolu için `PREVIEW_BASE_PATH=/RizaAydin npm run build:preview` kullanın. Özel depoyu izin almadan herkese açmayın.

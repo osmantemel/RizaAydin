@@ -10,7 +10,8 @@
     "test": "node --env-file-if-exists=.env --test test/*.test.mjs",
     "backup": "node --env-file-if-exists=.env scripts/backup.mjs",
     "format": "prettier --write app components server lib content styles scripts test next.config.mjs package.json",
-    "format:check": "prettier --check app components server lib content styles scripts test next.config.mjs package.json"
+    "format:check": "prettier --check app components server lib content styles scripts test next.config.mjs package.json",
+    "build:preview": "node scripts/export-preview.mjs"
   },
   "engines": {
     "node": ">=24"
